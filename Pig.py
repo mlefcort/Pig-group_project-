@@ -29,6 +29,7 @@ class Turn:
         dice1 = self.roll()
         dice2 = self.roll()
         print(' you rolled '+ str(dice1) + ' and ' + str(dice2))
+
         if dice1 == 1 and dice2 == 1:
             self.player.playerTotalScore = 0
             return self.player.playerTotalScore
@@ -42,7 +43,7 @@ class Turn:
             self.turnscore += dice1 + dice2
             play_again = 0
             while play_again not in ["Yes","No"]:
-                play_again = input("Would you like to continue? Yes or No ")
+                play_again = input("Would you like to continue? Yes or No:")
                 if play_again == "Yes":
                     return self.gameplay()
                 if play_again == "No":
