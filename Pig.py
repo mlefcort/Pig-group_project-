@@ -12,7 +12,7 @@ class Gameplay:
         self.max_score = int(input("What would you like to play up to? "))
 
     def game_start(self):
-        print("Welcome {0} & {1} ".format(self.player1.Name,self.player2.Name))
+        print("Welcome {0} & {1} \n".format(self.player1.Name,self.player2.Name))
         while self.player1.playerTotalScore < self.max_score and self.player2.playerTotalScore < self.max_score:
             player1_turn = Turn(self.player1)
             player1_turn.gameplay()
@@ -27,10 +27,10 @@ class Turn:
     def roll(self):
         return random.randint(1,6)
     def gameplay(self):
-        print("Your turn score is " +str(self.turnscore))
+        print("Your turn score is " +str(self.turnscore) + "\n")
         dice1 = self.roll()
         dice2 = self.roll()
-        print(' you rolled '+ str(dice1) + ' and ' + str(dice2))
+        print('You rolled '+ str(dice1) + ' and ' + str(dice2) + "\n")
         if dice1 == 1 and dice2 == 1:
             self.player.playerTotalScore = 0
             return self.player.playerTotalScore
@@ -44,7 +44,8 @@ class Turn:
             self.turnscore += dice1 + dice2
             play_again = 0
             while play_again not in ["Yes","No"]:
-                play_again = input("Would you like to continue? Yes or No:")
+                play_again = input("Would you like to continue? Yes or No: ")
+                print('\n')
                 if play_again == "Yes":
                     return self.gameplay()
                 if play_again == "No":
@@ -54,6 +55,5 @@ class Turn:
                 else:
                     print('Enter Yes or No')
 
-# t = Turn()
 g = Gameplay()
 g.game_start()
