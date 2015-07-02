@@ -59,7 +59,7 @@ class Turn:
                     print(self.player.playerTotalScore)
                     return self.player.playerTotalScore
                 else:
-                    print('Enter Yes or No')
+                    print('Please enter a correct option')
 
 g = Gameplay()
 g.game_start()
