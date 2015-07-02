@@ -8,7 +8,7 @@ class Gameplay:
     def __init__(self):
         self.player1 = Player()
         self.player2 = Player()
-        self.max_score = int(input("What would you like to play up to? "))
+        self.max_score = int(input("How many points would you like to play up to? "))
 
     def game_start(self):
         while self.player1.playerTotalScore < self.max_score and self.player2.playerTotalScore < self.max_score:
@@ -16,7 +16,7 @@ class Gameplay:
             player1_turn.gameplay()
             player2_turn = Turn(self.player2)
             player2_turn.gameplay()
-        print ("Game Over")
+        print ("Game Done")
 
 class Turn:
     def __init__(self,player):
@@ -41,7 +41,7 @@ class Turn:
             self.turnscore += dice1 + dice2
             play_again = 0
             while play_again not in ["Yes","No"]:
-                play_again = input("Would you like to continue? Yes or No ")
+                play_again = input("Would you like to continue? Yes or No:")
                 if play_again == "Yes":
                     return self.gameplay()
                 if play_again == "No":
