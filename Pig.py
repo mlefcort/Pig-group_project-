@@ -88,5 +88,8 @@ class Turn:
                 else:
                     print('Please enter a correct option')
 
+
+## Note set Gameplay to "True" to intialise Robot, otherwise leave blank
+g = Gameplay(True)
 g = Gameplay(True)
 g.game_start()
