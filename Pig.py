@@ -6,12 +6,13 @@ class Player:
 
 
 class Gameplay:
-    def __init__(self):
-        self.player1 = Player("Player 1")
-        self.player2 = Player("Player 2")
+    def __init__(self, cpu = False):
         self.max_score = int(input("What would you like to play up to? "))
+        self.cpu = cpu
 
     def game_start(self):
+        self.player1 = Player("Player 1")
+        self.player2 = Player("Player 2")
         print("Welcome {0} & {1} \n".format(self.player1.Name,self.player2.Name))
         while self.player1.playerTotalScore < self.max_score and self.player2.playerTotalScore < self.max_score:
             player1_turn = Turn(self.player1)
