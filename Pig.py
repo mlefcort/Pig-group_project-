@@ -13,7 +13,7 @@ class Robot:
 
 class Gameplay:
     def __init__(self, robot = False):
-        self.max_score = int(input("What would you like to play up to? "))
+        self.max_score = int(input("What would you like the winning number to be? "))
         self.robot = robot
 
     def game_start(self):
@@ -90,6 +90,6 @@ class Turn:
 
 
 ## Note set Gameplay to "True" to intialise Robot, otherwise leave blank
-g = Gameplay(True)
-g = Gameplay(True)
+g = Gameplay(False)
+#g = Gameplay(True)
 g.game_start()
