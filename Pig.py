@@ -8,7 +8,7 @@ class Gameplay:
     def __init__(self):
         self.player1 = Player()
         self.player2 = Player()
-        self.max_score = int(input("What would you like to play up to? "))
+        self.max_score = int(input("How many points would you like to play up to? "))
 
     def game_start(self):
         while self.player1.playerTotalScore < self.max_score and self.player2.playerTotalScore < self.max_score:
