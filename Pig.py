@@ -9,16 +9,17 @@ class Robot(Player):
     def __init__(self,name):
         self.isRobot = True
 
-
-
 class Gameplay:
-    def __init__(self, cpu = False):
+    def __init__(self, robot = False):
         self.max_score = int(input("What would you like to play up to? "))
-        self.cpu = cpu
+        self.robot = robot
 
     def game_start(self):
         self.player1 = Player("Player 1")
-        self.player2 = Player("Player 2")
+        if self.robot == False:
+            self.player2 = Player("Player 2")
+        else:
+            self.player2 = Robot("Computer")
         print("Welcome {0} & {1} \n".format(self.player1.Name,self.player2.Name))
         while self.player1.playerTotalScore < self.max_score and self.player2.playerTotalScore < self.max_score:
             player1_turn = Turn(self.player1)
