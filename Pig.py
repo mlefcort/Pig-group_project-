@@ -29,9 +29,11 @@ class Turn:
     
     def announceTurn(self):
         print ("{0}'s Turn!!".format(self.player.Name))
+        print("\n")
 
     def roll(self):
         return random.randint(1,6)
+
     def gameplay(self):
         print("Your turn score is " +str(self.turnscore) + "\n")
         dice1 = self.roll()
@@ -56,7 +58,7 @@ class Turn:
                     return self.gameplay()
                 if play_again == "No":
                     self.player.playerTotalScore +=self.turnscore
-                    print(self.player.playerTotalScore)
+                    print ("{0}'s Total Score is {1}\n".format(self.player.Name,self.player.playerTotalScore))
                     return self.player.playerTotalScore
                 else:
                     print('Please enter a correct option')
