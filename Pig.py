@@ -51,8 +51,6 @@ class Turn:
             play_again = "No"
         return play_again
 
-
-
     def gameplay(self):
         print("Your turn score is " +str(self.turnscore) + "\n")
         dice1 = self.roll()
@@ -74,11 +72,14 @@ class Turn:
             self.turnscore += dice1 + dice2
             play_again = None
             while play_again not in ["Yes","No"]:
-                play_again = input("Would you like to continue? Yes or No: ")
-                print('\n')
+                if self.player.isRobot == False:
+                    play_again = input("Would you like to continue? Yes or No: ")
+                    print('\n')
+                else:
+                    play_again = self.robotPlayAgain()
                 if play_again == "Yes":
                     return self.gameplay()
-                if play_again == "No":
+                elif play_again == "No":
                     self.player.playerTotalScore +=self.turnscore
                     self.totalScoreMessage()
                     return self.player.playerTotalScore
