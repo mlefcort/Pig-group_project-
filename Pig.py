@@ -34,6 +34,9 @@ class Turn:
     def roll(self):
         return random.randint(1,6)
 
+    def totalScoreMessage(self):
+        print ("{0}'s Total Score is {1}\n".format(self.player.Name,self.player.playerTotalScore))
+
     def gameplay(self):
         print("Your turn score is " +str(self.turnscore) + "\n")
         dice1 = self.roll()
@@ -41,12 +44,15 @@ class Turn:
         print('You rolled '+ str(dice1) + ' and ' + str(dice2) + "\n")
         if dice1 == 1 and dice2 == 1:
             self.player.playerTotalScore = 0
+            self.totalScoreMessage()
             return self.player.playerTotalScore
         elif dice1 == 1 or dice2 == 1:
             self.turnscore = 0
+            self.totalScoreMessage()
             return self.player.playerTotalScore
         elif dice1 == dice2:
             self.turnscore = dice1 + dice2
+            self.totalScoreMessage()
             return self.gameplay()
         else:
             self.turnscore += dice1 + dice2
@@ -58,7 +64,7 @@ class Turn:
                     return self.gameplay()
                 if play_again == "No":
                     self.player.playerTotalScore +=self.turnscore
-                    print ("{0}'s Total Score is {1}\n".format(self.player.Name,self.player.playerTotalScore))
+                    self.totalScoreMessage()
                     return self.player.playerTotalScore
                 else:
                     print('Please enter a correct option')
