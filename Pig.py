@@ -16,7 +16,7 @@ class Gameplay:
             player1_turn.gameplay()
             player2_turn = Turn(self.player2)
             player2_turn.gameplay()
-        print ("Game Over")
+        print ("Game Done")
 
 class Turn:
     def __init__(self,player):
