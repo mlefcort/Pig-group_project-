@@ -27,7 +27,7 @@ class Turn:
     def gameplay(self):
         dice1 = self.roll()
         dice2 = self.roll()
-        print('you rolled '+ str(dice1) + ' and ' + str(dice2))
+        print((str(self.player)) + ' you rolled '+ str(dice1) + ' and ' + str(dice2))
         if dice1 == 1 and dice2 == 1:
             self.player.playerTotalScore = 0
             return self.player.playerTotalScore
