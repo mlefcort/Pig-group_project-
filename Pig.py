@@ -45,6 +45,7 @@ class Turn:
 
     def totalScoreMessage(self):
         print ("{0}'s Total Score is {1}\n".format(self.player.Name,self.player.playerTotalScore))
+        print ("==========================================\n")
 
     def robotPlayAgain(self):
         play_again = "Yes"
@@ -67,7 +68,6 @@ class Turn:
             return self.player.playerTotalScore
         elif dice1 == dice2:
             self.turnscore = dice1 + dice2
-            self.totalScoreMessage()
             return self.gameplay()
         else:
             self.turnscore += dice1 + dice2
