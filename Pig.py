@@ -1,13 +1,14 @@
 import random
 class Player:
-    def __init__(self):
+    def __init__(self,name):
         self.playerTotalScore = 0
+        self.playerName = name
 
 
 class Gameplay:
     def __init__(self):
-        self.player1 = Player()
-        self.player2 = Player()
+        self.player1 = Player("Player 1")
+        self.player2 = Player("Player 2")
         self.max_score = int(input("What would you like to play up to? "))
 
     def game_start(self):
