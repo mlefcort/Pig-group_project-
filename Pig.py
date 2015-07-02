@@ -5,8 +5,10 @@ class Player:
         self.Name = name
         self.isRobot = False
 
-class Robot(Player):
+class Robot:
     def __init__(self,name):
+        self.playerTotalScore = 0
+        self.Name = name
         self.isRobot = True
 
 class Gameplay:
@@ -47,7 +49,7 @@ class Turn:
 
     def robotPlayAgain(self):
         play_again = "Yes"
-        if self.turn_score > 16:
+        if self.turnscore > 9:
             play_again = "No"
         return play_again
 
@@ -86,5 +88,5 @@ class Turn:
                 else:
                     print('Please enter a correct option')
 
-g = Gameplay()
+g = Gameplay(True)
 g.game_start()
