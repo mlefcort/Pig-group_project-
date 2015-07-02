@@ -3,6 +3,12 @@ class Player:
     def __init__(self,name):
         self.playerTotalScore = 0
         self.Name = name
+        self.isRobot = False
+
+class Robot(Player):
+    def __init__(self,name):
+        self.isRobot = True
+
 
 
 class Gameplay:
