@@ -2,7 +2,7 @@ import random
 class Player:
     def __init__(self,name):
         self.playerTotalScore = 0
-        self.playerName = name
+        self.Name = name
 
 
 class Gameplay:
@@ -12,6 +12,7 @@ class Gameplay:
         self.max_score = int(input("What would you like to play up to? "))
 
     def game_start(self):
+        print("Welcome {0} & {1} ".format(self.player1.Name,self.player2.Name))
         while self.player1.playerTotalScore < self.max_score and self.player2.playerTotalScore < self.max_score:
             player1_turn = Turn(self.player1)
             player1_turn.gameplay()
@@ -30,7 +31,6 @@ class Turn:
         dice1 = self.roll()
         dice2 = self.roll()
         print(' you rolled '+ str(dice1) + ' and ' + str(dice2))
-
         if dice1 == 1 and dice2 == 1:
             self.player.playerTotalScore = 0
             return self.player.playerTotalScore
