@@ -45,6 +45,14 @@ class Turn:
     def totalScoreMessage(self):
         print ("{0}'s Total Score is {1}\n".format(self.player.Name,self.player.playerTotalScore))
 
+    def robotPlayAgain(self):
+        play_again = "Yes"
+        if self.turn_score > 16:
+            play_again = "No"
+        return play_again
+
+
+
     def gameplay(self):
         print("Your turn score is " +str(self.turnscore) + "\n")
         dice1 = self.roll()
@@ -64,7 +72,7 @@ class Turn:
             return self.gameplay()
         else:
             self.turnscore += dice1 + dice2
-            play_again = 0
+            play_again = None
             while play_again not in ["Yes","No"]:
                 play_again = input("Would you like to continue? Yes or No: ")
                 print('\n')
