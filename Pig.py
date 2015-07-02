@@ -15,8 +15,10 @@ class Gameplay:
         print("Welcome {0} & {1} \n".format(self.player1.Name,self.player2.Name))
         while self.player1.playerTotalScore < self.max_score and self.player2.playerTotalScore < self.max_score:
             player1_turn = Turn(self.player1)
+            player1_turn.announceTurn()
             player1_turn.gameplay()
             player2_turn = Turn(self.player2)
+            player2_turn.announceTurn()
             player2_turn.gameplay()
         print ("Game Over")
 
@@ -24,6 +26,10 @@ class Turn:
     def __init__(self,player):
         self.player = player
         self.turnscore = 0
+    
+    def announceTurn(self):
+        print ("{0}'s Turn!!".format(self.player.Name))
+
     def roll(self):
         return random.randint(1,6)
     def gameplay(self):
