@@ -38,8 +38,7 @@ class Turn:
         self.turnscore = 0
     
     def announceTurn(self):
-        print ("{0}'s Turn!!".format(self.player.Name))
-        print("\n")
+        print ("{0}'s Turn!!\n".format(self.player.Name))
 
     def roll(self):
         return random.randint(1,6)
