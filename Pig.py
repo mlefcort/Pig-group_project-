@@ -28,6 +28,8 @@ class Gameplay:
             player1_turn = Turn(self.player1)
             player1_turn.announceTurn()
             player1_turn.gameplay()
+            if self.player1.playerTotal > self.max_score:
+                self.game_over()
             player2_turn = Turn(self.player2)
             player2_turn.announceTurn()
             player2_turn.gameplay()
