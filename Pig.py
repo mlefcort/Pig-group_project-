@@ -6,10 +6,11 @@ class Player:
         self.isRobot = False
 
 class Robot:
-    def __init__(self,name):
+    def __init__(self,name, aggression_level = None):
         self.playerTotalScore = 0
         self.Name = name
         self.isRobot = True
+        self.aggression_level = aggression_level
 
 class Gameplay:
     def __init__(self, robot = False):
@@ -31,6 +32,8 @@ class Gameplay:
             player2_turn.announceTurn()
             player2_turn.gameplay()
         print ("Game Over")
+
+    def game_over(self):
 
 class Turn:
     def __init__(self,player):
