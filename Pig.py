@@ -6,11 +6,16 @@ class Player:
         self.isRobot = False
 
 class Robot:
-    def __init__(self,name, aggression_level = None):
+    def __init__(self,name):
         self.playerTotalScore = 0
         self.Name = name
         self.isRobot = True
-        self.aggression_level = aggression_level
+        self.aggression_level = self.chooseAggression()
+
+    def chooseAggression(self):
+        userAggressionChoice = input("What would you like to set the computer's aggression level at? \nThe computer's aggresion level is the number at which they will bank their turn: ")
+        return int(userAggressionChoice)
+
 
 class Gameplay:
     def __init__(self, robot = False):
@@ -28,7 +33,7 @@ class Gameplay:
             player1_turn = Turn(self.player1)
             player1_turn.announceTurn()
             player1_turn.gameplay()
-            if self.player1.playerTotal > self.max_score:
+            if self.player1.playerTotalScore > self.max_score:
                 self.game_over()
             player2_turn = Turn(self.player2)
             player2_turn.announceTurn()
@@ -39,7 +44,7 @@ class Gameplay:
         if self.player1.playerTotalScore > self.player2.playerTotalScore:
             print ("Congratulations {0}! - You have won with: {1} points".format(self.player1.Name,self.player1.playerTotalScore))
         else:
-            print ("Congratulations {0}! - You have won with: {1} points".format(self.player1.Name,self.player1.playerTotalScore))
+            print ("Congratulations {0}! - You have won with: {1} points".format(self.player2.Name,self.player2.playerTotalScore))
 
 
 
@@ -60,7 +65,8 @@ class Turn:
 
     def robotPlayAgain(self):
         play_again = "Yes"
-        if self.turnscore > 9:
+        print(self.player.aggression_level)
+        if self.turnscore > self.player.aggression_level:
             play_again = "No"
         return play_again
 
@@ -100,6 +106,6 @@ class Turn:
 
 
 ## Note set Gameplay to "True" to intialise Robot, otherwise leave blank
-g = Gameplay(False)
-#g = Gameplay(True)
+#g = Gameplay(False)
+g = Gameplay(True)
 g.game_start()
