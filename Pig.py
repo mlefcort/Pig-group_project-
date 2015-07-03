@@ -44,7 +44,7 @@ class Turn:
         return random.randint(1,6)
 
     def totalScoreMessage(self):
-        print ("{0}'s Total Score is {1}\n".format(self.player.Name,self.player.playerTotalScore))
+        print ("{0}'s Total Score is: {1}\n".format(self.player.Name,self.player.playerTotalScore))
         print ("==========================================\n")
 
     def robotPlayAgain(self):
@@ -54,7 +54,7 @@ class Turn:
         return play_again
 
     def gameplay(self):
-        print("Your turn score is " +str(self.turnscore) + "\n")
+        print("Your turn score is: " +str(self.turnscore) + "\n")
         dice1 = self.roll()
         dice2 = self.roll()
         print('You rolled '+ str(dice1) + ' and ' + str(dice2) + "\n")
