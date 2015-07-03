@@ -31,9 +31,15 @@ class Gameplay:
             player2_turn = Turn(self.player2)
             player2_turn.announceTurn()
             player2_turn.gameplay()
-        print ("Game Over")
+        self.game_over()
 
     def game_over(self):
+        if self.player1.playerTotalScore > self.player2.playerTotalScore:
+            print ("Congratulations {0}! - You have won with: {1} points".format(self.player1.Name,self.player1.playerTotalScore))
+        else:
+            print ("Congratulations {0}! - You have won with: {1} points".format(self.player1.Name,self.player1.playerTotalScore))
+
+
 
 class Turn:
     def __init__(self,player):
