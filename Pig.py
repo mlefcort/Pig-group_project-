@@ -65,7 +65,6 @@ class Turn:
 
     def robotPlayAgain(self):
         play_again = "Yes"
-        print(self.player.aggression_level)
         if self.turnscore > self.player.aggression_level:
             play_again = "No"
         return play_again
