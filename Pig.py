@@ -26,18 +26,25 @@ class Robot:
 class Gameplay:
     def __init__(self, robot = False):
         self.max_score = int(sys.argv[1])
-        self.robot = robot
+        self.gameMode = input("What game mode would you like to play? \nA: Player 1 versus Player 2 \nB: Player 1 versus Computer\nC: Player 1 versus Player 2 versus Computer \nEnter A, B or C....")
+        # self.robot = robot
         self.playerList = self.initialisePlayers()
 
     def initialisePlayers(self):
         playerList = []
         self.player1 = Player("Player 1")
         playerList.append(self.player1)
-        if self.robot == False:
+        if self.gameMode == "A":
             self.player2 = Player("Player 2")
-        else:
+            playerList.append(self.player2)
+        elif self.gameMode == "B":
             self.player2 = Robot("Computer")
-        playerList.append(self.player2)
+            playerList.append(self.player2)
+        else:
+            self.player2 = Player("Player 2")
+            self.player3 = Robot("Computer")
+            playerList.append(self.player2)
+            playerList.append(self.player3)
         return playerList
 
     def game_start(self):
@@ -54,10 +61,8 @@ class Gameplay:
     def game_over(self):
         if self.player1.totalScore > self.player2.totalScore:
             print ("Congratulations {0}! - You have won with: {1} points".format(self.player1.Name,self.player1.totalScore))
-            break
         else:
             print ("Congratulations {0}! - You have won with: {1} points".format(self.player2.Name,self.player2.totalScore))
-            break
 
 
 class Turn:
