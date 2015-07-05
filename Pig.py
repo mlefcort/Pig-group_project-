@@ -21,24 +21,26 @@ class Gameplay:
     def __init__(self, robot = False):
         self.max_score = int(input("What would you like the winning number to be? "))
         self.robot = robot
+        self.playerList = []
 
     def game_start(self):
         self.player1 = Player("Player 1")
+        self.playerList.append(self.player1)
         if self.robot == False:
             self.player2 = Player("Player 2")
         else:
             self.player2 = Robot("Computer")
+        self.playerList.append(self.player2)
         print("Welcome {0} & {1} \n".format(self.player1.Name,self.player2.Name))
-        while self.player1.playerTotalScore < self.max_score and self.player2.playerTotalScore < self.max_score:
-            player1_turn = Turn(self.player1)
-            player1_turn.announceTurn()
-            player1_turn.gameplay()
-            if self.player1.playerTotalScore > self.max_score:
-                self.game_over()
-            player2_turn = Turn(self.player2)
-            player2_turn.announceTurn()
-            player2_turn.gameplay()
-        self.game_over()
+        
+        while max((self.player1.playerTotalScore, self.player2.playerTotalScore)) < self.max_score:
+            for player in self.playerList:
+                playerTurn = Turn(player)
+                playerTurn.announceTurn()
+                playerTurn.gameplay()
+                if player.playerTotalScore > self.max_score:
+                    self.game_over()
+
 
     def game_over(self):
         if self.player1.playerTotalScore > self.player2.playerTotalScore:
