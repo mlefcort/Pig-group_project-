@@ -22,16 +22,20 @@ class Gameplay:
     def __init__(self, robot = False):
         self.max_score = int(input("What would you like the winning number to be? "))
         self.robot = robot
-        self.playerList = []
+        self.playerList = self.initialisePlayers()
 
-    def game_start(self):
+    def initialisePlayers(self):
+        playerList = []
         self.player1 = Player("Player 1")
-        self.playerList.append(self.player1)
+        playerList.append(self.player1)
         if self.robot == False:
             self.player2 = Player("Player 2")
         else:
             self.player2 = Robot("Computer")
-        self.playerList.append(self.player2)
+        playerList.append(self.player2)
+        return playerList
+
+    def game_start(self):
         print("Welcome {0} & {1} \n".format(self.player1.Name,self.player2.Name))
         
         while max((self.player1.totalScore, self.player2.totalScore)) < self.max_score:
