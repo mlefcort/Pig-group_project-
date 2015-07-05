@@ -60,11 +60,13 @@ class Gameplay:
                     break
 
     def game_over(self):
-        if self.player1.totalScore > self.player2.totalScore:
-            print ("Congratulations {0}! - You have won with: {1} points".format(self.player1.Name,self.player1.totalScore))
-        else:
-            print ("Congratulations {0}! - You have won with: {1} points".format(self.player2.Name,self.player2.totalScore))
-
+        winningPlayerName = ''
+        winningPlayerScore = 0
+        for player in self.playerList:
+            if player.totalScore > winningPlayerScore:
+                winningPlayerScore = player.totalScore
+                winningPlayerName = player.Name
+        print ("Congratulations {0}! - You have won with: {1} points".format(winningPlayerName,winningPlayerScore))   
 
 class Turn:
     def __init__(self,player):
