@@ -1,8 +1,6 @@
 # Winning number is taken as a command line argument
 #e.g. if you want 100 to be the winning score
 # when initialising the game enter "python3 Pig.py 100" at the command line
-
-
 import sys
 import random
 class Player:
@@ -25,7 +23,7 @@ class Robot:
 
 
 class Gameplay:
-    def __init__(self, robot = False):
+    def __init__(self):
         self.max_score = int(sys.argv[1])
         self.gameMode = input("What game mode would you like to play? \nA: Player 1 versus Player 2 \nB: Player 1 versus Computer\nC: Player 1 versus Player 2 versus Computer \nEnter A, B or C....")
         self.playerList = self.initialisePlayers()
@@ -123,8 +121,5 @@ class Turn:
                 else:
                     print('Please enter a correct option')
 
-
-## Note set Gameplay to "True" to intialise Robot, otherwise leave blank
-#g = Gameplay(False)
-g = Gameplay(True)
+g = Gameplay()
 g.game_start()
