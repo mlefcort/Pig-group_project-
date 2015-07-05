@@ -1,13 +1,13 @@
 import random
 class Player:
     def __init__(self,name):
-        self.playerTotalScore = 0
+        self.totalScore = 0
         self.Name = name
         self.isRobot = False
 
 class Robot:
     def __init__(self,name):
-        self.playerTotalScore = 0
+        self.totalScore = 0
         self.Name = name
         self.isRobot = True
         self.aggression_level = self.chooseAggression()
@@ -33,20 +33,20 @@ class Gameplay:
         self.playerList.append(self.player2)
         print("Welcome {0} & {1} \n".format(self.player1.Name,self.player2.Name))
         
-        while max((self.player1.playerTotalScore, self.player2.playerTotalScore)) < self.max_score:
+        while max((self.player1.totalScore, self.player2.totalScore)) < self.max_score:
             for player in self.playerList:
                 playerTurn = Turn(player)
                 playerTurn.announceTurn()
                 playerTurn.gameplay()
-                if player.playerTotalScore > self.max_score:
+                if player.totalScore > self.max_score:
                     self.game_over()
 
 
     def game_over(self):
-        if self.player1.playerTotalScore > self.player2.playerTotalScore:
-            print ("Congratulations {0}! - You have won with: {1} points".format(self.player1.Name,self.player1.playerTotalScore))
+        if self.player1.totalScore > self.player2.totalScore:
+            print ("Congratulations {0}! - You have won with: {1} points".format(self.player1.Name,self.player1.totalScore))
         else:
-            print ("Congratulations {0}! - You have won with: {1} points".format(self.player2.Name,self.player2.playerTotalScore))
+            print ("Congratulations {0}! - You have won with: {1} points".format(self.player2.Name,self.player2.totalScore))
 
 
 
@@ -62,7 +62,7 @@ class Turn:
         return random.randint(1,6)
 
     def totalScoreMessage(self):
-        print ("{0}'s Total Score is: {1}\n".format(self.player.Name,self.player.playerTotalScore))
+        print ("{0}'s Total Score is: {1}\n".format(self.player.Name,self.player.totalScore))
         print ("==========================================\n")
 
     def robotPlayAgain(self):
@@ -77,13 +77,13 @@ class Turn:
         dice2 = self.roll()
         print('You rolled '+ str(dice1) + ' and ' + str(dice2) + "\n")
         if dice1 == 1 and dice2 == 1:
-            self.player.playerTotalScore = 0
+            self.player.totalScore = 0
             self.totalScoreMessage()
-            return self.player.playerTotalScore
+            return self.player.totalScore
         elif dice1 == 1 or dice2 == 1:
             self.turnscore = 0
             self.totalScoreMessage()
-            return self.player.playerTotalScore
+            return self.player.totalScore
         elif dice1 == dice2:
             self.turnscore = dice1 + dice2
             return self.gameplay()
@@ -99,9 +99,9 @@ class Turn:
                 if play_again == "Yes":
                     return self.gameplay()
                 elif play_again == "No":
-                    self.player.playerTotalScore +=self.turnscore
+                    self.player.totalScore +=self.turnscore
                     self.totalScoreMessage()
-                    return self.player.playerTotalScore
+                    return self.player.totalScore
                 else:
                     print('Please enter a correct option')
 
