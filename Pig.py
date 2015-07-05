@@ -19,6 +19,7 @@ class Robot:
         self.aggression_level = self.chooseAggression()
 
     def chooseAggression(self):
+        print ("")
         userAggressionChoice = input("What would you like to set the computer's aggression level at? \nThe computer's aggresion level is the number at which they will bank their turn: ")
         return int(userAggressionChoice)
 
@@ -27,7 +28,6 @@ class Gameplay:
     def __init__(self, robot = False):
         self.max_score = int(sys.argv[1])
         self.gameMode = input("What game mode would you like to play? \nA: Player 1 versus Player 2 \nB: Player 1 versus Computer\nC: Player 1 versus Player 2 versus Computer \nEnter A, B or C....")
-        # self.robot = robot
         self.playerList = self.initialisePlayers()
 
     def initialisePlayers(self):
@@ -48,7 +48,9 @@ class Gameplay:
         return playerList
 
     def game_start(self):
-        print("Welcome {0} & {1} \n".format(self.player1.Name,self.player2.Name))
+        for player in self.playerList:
+            print ("Welcome {0}!\n".format(player.Name))
+        print("==========================================\n")
         
         while max((self.player1.totalScore, self.player2.totalScore)) < self.max_score:
             for player in self.playerList:
@@ -57,6 +59,7 @@ class Gameplay:
                 playerTurn.gameplay()
                 if player.totalScore > self.max_score:
                     self.game_over()
+                    break
 
     def game_over(self):
         if self.player1.totalScore > self.player2.totalScore:
