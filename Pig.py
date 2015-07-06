@@ -17,9 +17,7 @@ class Robot:
         self.aggression_level = self.chooseAggression()
 
     def chooseAggression(self):
-        print ("")
-        userAggressionChoice = input("What would you like to set the computer's aggression level at? \nThe computer's aggression level is the number at which they will bank their turn: ")
-        print("")
+        userAggressionChoice = input("\nWhat would you like to set the computer's aggression level at? \nThe computer's aggresion level is the number at which they will bank their turn: ")
         return int(userAggressionChoice)
 
 
@@ -50,7 +48,7 @@ class Gameplay:
         for player in self.playerList:
             print ("Welcome {0}!\n".format(player.Name))
         print("==========================================\n")
-        
+
         while max((self.player1.totalScore, self.player2.totalScore)) < self.max_score:
             for player in self.playerList:
                 playerTurn = Turn(player,self.max_score)
@@ -67,14 +65,13 @@ class Gameplay:
             if player.totalScore > winningPlayerScore:
                 winningPlayerScore = player.totalScore
                 winningPlayerName = player.Name
-        print ("Congratulations {0}! - You have won with: {1} points".format(winningPlayerName,winningPlayerScore))   
+        print ("Congratulations {0}! - You have won with: {1} points".format(winningPlayerName,winningPlayerScore))
 
 class Turn:
     def __init__(self,player,max_score):
         self.player = player
         self.turnscore = 0
         self.max_score = max_score
-    
     def announceTurn(self):
         print ("{0}'s Turn!!\n".format(self.player.Name))
 
@@ -92,7 +89,7 @@ class Turn:
         return play_again
 
     def gameplay(self):
-        print("Your turn score is: " +str(self.turnscore) + "\n")
+        print("\nYour turn score is: " +str(self.turnscore) + "\n")
         dice1 = self.roll()
         dice2 = self.roll()
         print('You rolled '+ str(dice1) + ' and ' + str(dice2) + "\n")
@@ -112,8 +109,7 @@ class Turn:
             play_again = None
             while play_again not in ["Yes","No"]:
                 if self.player.isRobot == False:
-                    play_again = input("Would you like to continue? Yes or No: ")
-                    print('\n')
+                    play_again = input("\nWould you like to continue? Yes or No: ")
                 else:
                     play_again = self.robotPlayAgain()
                 if play_again == "Yes":
