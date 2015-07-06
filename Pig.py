@@ -51,7 +51,7 @@ class Gameplay:
 
         while max((self.player1.totalScore, self.player2.totalScore)) < self.max_score:
             for player in self.playerList:
-                playerTurn = Turn(player)
+                playerTurn = Turn(player,self.max_score)
                 playerTurn.announceTurn()
                 playerTurn.gameplay()
                 if player.totalScore > self.max_score:
@@ -59,17 +59,19 @@ class Gameplay:
                     break
 
     def game_over(self):
-        if self.player1.totalScore > self.player2.totalScore:
-            print ("Congratulations {0}! - You have won with: {1} points".format(self.player1.Name,self.player1.totalScore))
-        else:
-            print ("Congratulations {0}! - You have won with: {1} points".format(self.player2.Name,self.player2.totalScore))
-
+        winningPlayerName = ''
+        winningPlayerScore = 0
+        for player in self.playerList:
+            if player.totalScore > winningPlayerScore:
+                winningPlayerScore = player.totalScore
+                winningPlayerName = player.Name
+        print ("Congratulations {0}! - You have won with: {1} points".format(winningPlayerName,winningPlayerScore))
 
 class Turn:
-    def __init__(self,player):
+    def __init__(self,player,max_score):
         self.player = player
         self.turnscore = 0
-
+        self.max_score = max_score
     def announceTurn(self):
         print ("{0}'s Turn!!\n".format(self.player.Name))
 
@@ -82,7 +84,7 @@ class Turn:
 
     def robotPlayAgain(self):
         play_again = "Yes"
-        if self.turnscore > self.player.aggression_level:
+        if self.turnscore > self.player.aggression_level or self.turnscore + self.player.totalScore > self.max_score:
             play_again = "No"
         return play_again
 
