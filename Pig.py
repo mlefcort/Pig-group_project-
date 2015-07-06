@@ -18,7 +18,8 @@ class Robot:
 
     def chooseAggression(self):
         print ("")
-        userAggressionChoice = input("What would you like to set the computer's aggression level at? \nThe computer's aggresion level is the number at which they will bank their turn: ")
+        userAggressionChoice = input("What would you like to set the computer's aggression level at? \nThe computer's aggression level is the number at which they will bank their turn: ")
+        print("")
         return int(userAggressionChoice)
 
 
